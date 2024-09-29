@@ -32,10 +32,10 @@ function Box({turn, setTurn, position, gameOver, setGameOver, setWinner}) {
   const [value, setValue] = useState('');
 
   function onClick(){
-    if(gameOver == false){
-      if(value == ''){
+    if(gameOver === false){
+      if(value === ''){
         setValue(turn);
-        if(turn == 'X'){
+        if(turn === 'X'){
           positions[position - 1] = 1;
           setTurn('O')
         } else {
@@ -47,6 +47,7 @@ function Box({turn, setTurn, position, gameOver, setGameOver, setWinner}) {
 
     const checkWinner = CheckWin();
     if (checkWinner === 1){
+      console.log(checkWinner);
       setGameOver(true);
       setWinner('X wins!');
     } else if(checkWinner === 2) {
@@ -62,33 +63,34 @@ function Box({turn, setTurn, position, gameOver, setGameOver, setWinner}) {
 
 function CheckWin(){
   // columns
-  if(positions[0] == positions[3] && positions[0] == positions[6]){
+  if(positions[0] !== null && positions[0] === positions[3] && positions[0] === positions[6]){
     return positions[0];
   }
-  if(positions[1] == positions[4] && positions[1] == positions[7]){
+  if(positions[1] !== null && positions[1] === positions[4] && positions[1] === positions[7]){
     return positions[1];
   }
-  if(positions[2] == positions[5] && positions[2] == positions[8]){
-    return positions[2];
+  if(positions[2] !== null && positions[2] === positions[5] && positions[2] === positions[8]){
+    return positions[2]; 
   }
 
-  //rows
-  if(positions[0] == positions[1] && positions[0] == positions[2]){
+  // rows
+  if(positions[0] !== null && positions[0] === positions[1] && positions[0] === positions[2]){
     return positions[0];
   }
-  if(positions[3] == positions[4] && positions[3] == positions[5]){
+  if(positions[3] !== null && positions[3] === positions[4] && positions[3] === positions[5]){
     return positions[3];
   }
-  if(positions[6] == positions[7] && positions[6] == positions[8]){
+  if(positions[6] !== null && positions[6] === positions[7] && positions[6] === positions[8]){
     return positions[6];
   }
 
-  //diagonals
-  if(positions[0] == positions[4] && positions[0] == positions[8]){
+  // diagonals
+  if(positions[0] !== null && positions[0] === positions[4] && positions[0] === positions[8]){
     return positions[0];
   }
-  if(positions[2] == positions[4] && positions[2] == positions[6]){
+  if(positions[2] !== null && positions[2] === positions[4] && positions[2] === positions[6]){
     return positions[2];
   }
+
   return 0;
 }
