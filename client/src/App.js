@@ -7,6 +7,7 @@ export default function App() {
   return (
     <div className="App">
       <h1>Tic Tac Toe Game</h1>
+      <p className='credits'>by PJ Kim</p>
       <div className='grid-container'>
         <div><Box turn={turn} setTurn={setTurn}/></div>
         <div><Box turn={turn} setTurn={setTurn}/></div>
