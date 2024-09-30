@@ -1,20 +1,16 @@
 const express = require('express');
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-
-dotenv.config();
-
+const path = require('path');
 const app = express();
-const PORT = process.env.PORT || 5002;
 
-// Middleware to parse JSON
-app.use(express.json());
+// Serve static files from the React app
+app.use(express.static(path.join(__dirname, 'client/build')));
 
-// Simple route
-app.get('/', (req, res) => {
-  res.send('MERN Stack API is running...');
+// Handles any requests that don't match the ones above
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'client/build', 'index.html'));
 });
 
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
