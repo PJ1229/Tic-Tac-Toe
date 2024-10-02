@@ -23,7 +23,9 @@ export default function App() {
         <div><Box turn={turn} setTurn={setTurn} position={8} gameOver={gameOver} setGameOver={setGameOver} setWinner={setWinner}/></div>
         <div><Box turn={turn} setTurn={setTurn} position={9} gameOver={gameOver} setGameOver={setGameOver} setWinner={setWinner}/></div>
       </div>
-      <div className='winner'>{winner}</div>
+      <div className='winner'>
+        {winner}
+      </div>
     </div>
   );
 }
